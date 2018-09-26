@@ -17,7 +17,7 @@ const store = createStore(
   )
 )
 
-store.dispatch(fetchItems())
+store.dispatch(fetchItems(store.getState().filter))
 .then(console.log('done'))
 
 ReactDOM.render(

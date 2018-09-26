@@ -5,17 +5,26 @@ export function requestItems(){
 }
 
 export function receiveItems(data){
+  data.forEach(item => item.price = parseInt(item.price, 10))
   return {
     type: 'RECEIVE_ITEMS',
     items: data,
   }
 }
 
-export function fetchItems(){
+export function fetchItems(filter){
   return function(dispatch){
     dispatch(requestItems())
 
-    let request = fetch('/api/movies')
+    let params = [
+      filter.priceFilter.value ? 'min='+filter.priceFilter.min : 'min=0',
+      filter.priceFilter.value ? 'max='+filter.priceFilter.max : 'max=10000000',
+      filter.categoryFilter ? 'category='+filter.categoryFilter : 'category=any',
+      filter.colorFilter ? 'color='+filter.colorFilter : 'color=any',
+      filter.materialFilter ? 'material='+filter.materialFilter : 'material=any'
+    ].join('&')
+
+    let request = fetch('/api/furniture?'+params)
 
     return request
     .then(

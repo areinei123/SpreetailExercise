@@ -19,7 +19,7 @@ const furniture = (
       }
     case 'RECEIVE_ITEMS':
       return {...state,
-        items: actions.items,
+        items: action.items,
         loadingItems: false
       }
     case 'REQUEST_ITEMS_FAILURE':
@@ -43,19 +43,9 @@ const furniture = (
         pageError: true,
         errorMessage: action.message
       }
-    case 'CHANGE_CATEGORY_FILTER':
-      return {...state, 
-        categoryFilter: action.category
-      }
-    case 'CHANGE_PRICE_FILTER':
-      return {...state, 
-        priceFilter: action.price
-      }
-    case 'CHANGE_MATERIAL_FILTER':
-      return {...state, 
-        materialFilter: action.material
-      }
     default: 
       return state
   }
 }
+
+export default furniture

@@ -1,6 +1,7 @@
 import React from 'react'
-import Navigation from '../components/Navigation.jsx'
 import StatefulContent from '../containers/StatefulContent.jsx'
+import Navigation from '../components/Navigation.jsx'
+import StatefulCart from '../containers/StatefulCart.jsx'
 
 class App extends React.Component {
   constructor(props){
@@ -13,9 +14,9 @@ class App extends React.Component {
   render(){
     return(
       <React.Fragment>
-        <h1>Furniture Emporium</h1>
         <Navigation/>
         <StatefulContent/>
+        <StatefulCart/>
       </React.Fragment>
     ) 
   }

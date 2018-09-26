@@ -10,7 +10,21 @@ var connectionString = 'postgres://localhost:5432/furniture'
 var db = pgp(connectionString)
 
 function getAllFurniture(req, res, next){
-  db.any('select * from items')
+  console.log(req.query)
+
+  let request = [
+    'select * from items',
+    'left join item_option on items.id = item_option.item_id',
+    'where items.price >= '+req.query.min,
+    'and items.price <= '+req.query.max,
+    req.query.category !== 'any' ? 'and items.category = \''+req.query.category+'\'' : '',
+    req.query.color !== 'any' ? 'and item_option.color = \''+req.query.color+'\'' : '',
+    req.query.material !== 'any' ? 'and item_option.material = \''+req.query.material+'\'' : ''
+  ].join(' ')
+
+  console.log(request)
+
+  db.any(request)
   .then(function(data){
     res.status(200).json({
       status: 'success',
