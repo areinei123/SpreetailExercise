@@ -1,14 +1,14 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-import {addToCart} from '../actions/cart.js'
+// import {addToCart} from '../actions/cart.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'Add to Cart',
-  color: 'success'
+  label: 'Remove',
+  color: 'danger'
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: (item) => dispatch(addToCart(item, 1))
+  // onClick: (item) => dispatch(newMovieDialog(item))
 })
 
 export default connect(

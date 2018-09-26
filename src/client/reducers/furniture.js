@@ -2,13 +2,13 @@ const furniture = (
   state = {
     items: [],
     loadingItems: false,
-    loadingSingleItem: false,
     categoryFilter: false,
     priceFilter: false,
     colorFilter: false,
     materialFilter: false,
     pageError: false,
-    errorMessage: ''
+    errorMessage: '',
+    showSingleItem: false
   },
   action
 ) => {
@@ -42,6 +42,16 @@ const furniture = (
         loadingSingleItem: false,
         pageError: true,
         errorMessage: action.message
+      }
+    case 'SHOW_SINGLE_ITEM':
+      return {...state,
+        showSingleItem: {
+          item: action.item
+        }
+      }
+    case 'HIDE_SINGLE_ITEM':
+      return {...state,
+        showSingleItem: false
       }
     default: 
       return state

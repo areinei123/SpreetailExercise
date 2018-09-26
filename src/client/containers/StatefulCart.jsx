@@ -4,7 +4,8 @@ import Cart from '../components/Cart.jsx'
 // import {onSearchValueChange} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  cartContents: state.cart.contents
+  contents: state.cart.items,
+  showCart: state.cart.showCart
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -13,13 +13,15 @@ function getAllFurniture(req, res, next){
   console.log(req.query)
 
   let request = [
-    'select * from items',
-    'left join item_option on items.id = item_option.item_id',
+    'select items.*, json_agg(item_option.*) as "options"', //id, items.name, items.category, items.price, items.description
+    'from items',
+    'join item_option on items.id = item_option.item_id',
     'where items.price >= '+req.query.min,
     'and items.price <= '+req.query.max,
     req.query.category !== 'any' ? 'and items.category = \''+req.query.category+'\'' : '',
     req.query.color !== 'any' ? 'and item_option.color = \''+req.query.color+'\'' : '',
-    req.query.material !== 'any' ? 'and item_option.material = \''+req.query.material+'\'' : ''
+    req.query.material !== 'any' ? 'and item_option.material = \''+req.query.material+'\'' : '',
+    'group by items.id',
   ].join(' ')
 
   console.log(request)

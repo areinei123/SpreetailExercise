@@ -32,7 +32,7 @@ const Card = ({item}) => {
         </div>
         <div style={cardSpacing}>
           <ItemDetailsButton/>
-          <AddToCartButton/>
+          <AddToCartButton item={item}/>
         </div>
       </div>
     </div>  

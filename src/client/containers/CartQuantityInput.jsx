@@ -1,17 +1,15 @@
 import {connect} from 'react-redux'
-import Button from '../components/Button.jsx'
-import {addToCart} from '../actions/cart.js'
+import QuantityInput from '../components/QuantityInput.jsx'
+import {changeItemQuantity} from '../actions/cart.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'Add to Cart',
-  color: 'success'
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: (item) => dispatch(addToCart(item, 1))
+  onChange: (id, value) => dispatch(changeItemQuantity(id, value))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Button)
+)(QuantityInput)

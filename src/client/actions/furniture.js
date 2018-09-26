@@ -62,3 +62,10 @@ export function changeMaterialFilter(material){
     material: material
   }
 }
+
+export function showSingleItem(itemId){
+  return {
+    type: 'SHOW_SINGLE_ITEM',
+    item: itemId
+  }
+}

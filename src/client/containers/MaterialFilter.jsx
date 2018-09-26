@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
     'canvas',
     'wood',
     'metal',
-    'porcelain'
+    'porcelain',
+    'microfiber'
   ],
   value: state.filter.materialFilter
 })
