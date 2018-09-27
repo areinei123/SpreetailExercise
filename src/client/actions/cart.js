@@ -1,6 +1,4 @@
 export function addToCart(item){
-  item.cartQuantity = 1
-  // Change so that we can check if it exists
   return{
     type: 'ADD_TO_CART',
     item: item

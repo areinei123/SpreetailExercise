@@ -21,6 +21,14 @@ const Cart = ({contents, showCart}) => {
     justifyContent: 'space-between'
   }
 
+  let subtotal = 0
+
+  if(contents.length > 0){
+    contents.map(item => 
+      subtotal = subtotal + (item.price * item.cartQuantity)
+    )
+  }
+
   return (
     showCart 
     ? <div className='card' style={cartContainer}>
@@ -30,6 +38,7 @@ const Cart = ({contents, showCart}) => {
             <CloseCartButton/>
           </span>
           <div className='card-text'>
+            <p>Subtotal: ${subtotal}</p>
             {contents.length > 0
               ? contents.map((item,key) => 
                 <CartItem item={item} key={key}/>

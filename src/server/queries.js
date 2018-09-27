@@ -40,7 +40,15 @@ function getAllFurniture(req, res, next){
 
 function getSingleFurniture(req, res, next){
   var itemId = parseInt(req.params.id)
-  db.one('select * from furniture where id = $1', itemId)
+  let request = [
+    'select items.*, json_agg(item_option.*) as "options"', //id, items.name, items.category, items.price, items.description
+    'from items',
+    'join item_option on items.id = item_option.item_id',
+    'where items.id = $1',
+    'group by items.id'
+  ].join(' ')
+
+  db.one(request, itemId)
   .then(function(data){
     res.status(200).json({
       status: 'success',

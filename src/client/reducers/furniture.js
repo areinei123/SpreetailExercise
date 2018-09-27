@@ -1,3 +1,5 @@
+import {find} from 'lodash'
+
 const furniture = (
   state = {
     items: [],
@@ -34,7 +36,7 @@ const furniture = (
       }
     case 'RECEIVE_SINGLE_ITEM':
       return {...state,
-        items: actions.items,
+        showSingleItem: action.item,
         loadingSingleItem: false
       }
     case 'REQUEST_SINGLE_ITEM_FAILURE':
@@ -43,15 +45,19 @@ const furniture = (
         pageError: true,
         errorMessage: action.message
       }
-    case 'SHOW_SINGLE_ITEM':
-      return {...state,
-        showSingleItem: {
-          item: action.item
-        }
-      }
+    // case 'SHOW_SINGLE_ITEM':
+    //   return {...state,
+    //     showSingleItem: {
+    //       item: find(state.items, {id: action.item})
+    //     }
+    //   }
     case 'HIDE_SINGLE_ITEM':
       return {...state,
         showSingleItem: false
+      }
+    case 'CHOOSE_ITEM_OPTION':
+      return {...state,
+        showSingleItem: {...state.showSingleItem, selectedOption: action.option}
       }
     default: 
       return state

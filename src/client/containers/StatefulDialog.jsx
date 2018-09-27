@@ -1,17 +1,16 @@
 import {connect} from 'react-redux'
-import NavButton from '../components/NavButton.jsx'
-import {clearFilter} from '../actions/filter.js'
+import ItemDialog from '../components/ItemDialog.jsx'
+import {hideSingleItem} from '../actions/furniture.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'Clear',
-  color: 'warning'
+  item: state.furniture.showSingleItem
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(clearFilter())
+  closeModal: () => dispatch(hideSingleItem())
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavButton)
+)(ItemDialog)

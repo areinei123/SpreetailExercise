@@ -2,6 +2,7 @@ import React from 'react'
 import StatefulContent from '../containers/StatefulContent.jsx'
 import Navigation from '../components/Navigation.jsx'
 import StatefulCart from '../containers/StatefulCart.jsx'
+import StatefulDialog from '../containers/StatefulDialog.jsx'
 
 class App extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Navigation/>
         <StatefulContent/>
         <StatefulCart/>
+        <StatefulDialog/>
       </React.Fragment>
     ) 
   }

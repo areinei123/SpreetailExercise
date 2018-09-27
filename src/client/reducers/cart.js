@@ -1,4 +1,4 @@
-import {includes, find} from 'lodash'
+import {find, filter} from 'lodash'
 
 const cart = (
   state = {
@@ -10,14 +10,17 @@ const cart = (
   switch(action.type){
     case 'ADD_TO_CART':
     // Change so that we can check if it exists
-      if(includes(state.items, {id: action.item.id})){
-        return state.items.map(item => 
-          (item.id === action.item.id)
-            ? {...item, cartQuantity: item.cartQuantity++}
-            : item
-        )
+      if(find(state.items, {id: action.item.id})){
+        return {...state,
+          items: state.items.map(item => 
+            (item.selectedOption.id === action.item.selectedOption.id)
+              ? {...item, cartQuantity: item.cartQuantity+1}
+              : item
+          )
+        }
       }
       else {
+        action.item.cartQuantity = 1
         return {
           ...state,
           items: [...state.items, action.item]
@@ -26,13 +29,13 @@ const cart = (
     case 'REMOVE_FROM_CART':
       return {
         ...state,
-        items: [...state.items, state.items.filter(item => item.id !== action.id)]
+        items: state.items.filter(item => item.selectedOption.id !== action.id)
       }
     case 'CHANGE_QUANTITY':
       return {
         ...state,
         items: state.items.map(item => 
-          (item.id === action.id)
+          (item.selectedOption.id === action.id)
             ? {...item, cartQuantity: action.quantity}
             : item
           )

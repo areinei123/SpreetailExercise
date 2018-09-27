@@ -64,8 +64,42 @@ export function changeMaterialFilter(material){
 }
 
 export function showSingleItem(itemId){
+  $('#myModal').modal('show')
+  return function(dispatch){
+    let request = fetch('/api/furniture/'+itemId)
+
+    return request
+    .then(
+      response => response.json(),
+      error => dispatch(requestSingleItemError(error))
+    )
+    .then( json => dispatch(receiveSingleItem(json.data)))
+  }
+}
+
+export function receiveSingleItem(data){
   return {
-    type: 'SHOW_SINGLE_ITEM',
-    item: itemId
+    type: 'RECEIVE_SINGLE_ITEM',
+    item: data
+  }
+}
+
+export function requestSingleItemError(error){
+  return {
+    type: 'REQUEST_SINGLE_ITEM_FAILURE',
+    message: error
+  }
+}
+
+export function hideSingleItem(){
+  return {
+    type: 'HIDE_SINGLE_ITEM'
+  }
+}
+
+export function chooseOption(option){
+  return {
+    type: 'CHOOSE_ITEM_OPTION',
+    option: option
   }
 }

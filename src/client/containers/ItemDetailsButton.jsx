@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-// import {navigateToPage} from '../actions/navigation.js'
+import {showSingleItem} from '../actions/furniture.js'
 
 const mapStateToProps = (state, ownProps) => ({
   label: 'More Info',
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // onClick: (value) => dispatch(navigateToPage(value))
+  onClick: (itemId) => dispatch(showSingleItem(itemId))
 })
 
 export default connect(

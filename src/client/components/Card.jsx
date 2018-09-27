@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AddToCartButton from '../containers/AddToCartButton.jsx'
 import ItemDetailsButton from '../containers/ItemDetailsButton.jsx'
+import find from 'lodash'
 
 const Card = ({item}) => {
   let container = {
@@ -24,14 +25,14 @@ const Card = ({item}) => {
 
   return(
     <div className='card border col-lg-4 d-flex align-items-stretch'>
-      <img className='card-img-top' style={imageStyle} src={item.image}/>
+      <img className='card-img-top' style={imageStyle} src={item.selectedOption.image}/>
       <div className='card-body'>
         <div style={cardSpacing}>
           <h5 className='card-title'>{item.name}</h5>
           <p className='card-text'>${item.price}</p>
         </div>
         <div style={cardSpacing}>
-          <ItemDetailsButton/>
+          <ItemDetailsButton item={item.id}/>
           <AddToCartButton item={item}/>
         </div>
       </div>

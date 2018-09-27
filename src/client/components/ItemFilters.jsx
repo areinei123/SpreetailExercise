@@ -19,7 +19,9 @@ const ItemFilters = ({}) => {
       <CategoryFilter/>
       <MaterialFilter/>
       <ColorFilter/>
-      <ClearButton/>
+      <li className='nav-item'>
+        <ClearButton/>
+      </li>
     </ul>
   )
 }

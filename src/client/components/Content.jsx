@@ -32,7 +32,7 @@ class Content extends React.Component{
         : <div className='row mx-3'>
             {this.props.items.length > 0
             ? this.props.items.map((item, key) =>
-                <Card item={item} key={key}/>
+                <Card item={{...item, selectedOption: item.options[0]}} key={key}/>
               )
             : <div className="container alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Oh no!</strong> Looks like that query didn't return any results. Try a different filter result or clear them.

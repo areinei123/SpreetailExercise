@@ -8,14 +8,14 @@ const Dropdown = ({label, options, value, onClick}) => {
   }
 
   return (
-    <li className='nav-item' style={{margin: '0 10px'}}>
+    <li className='nav-item dropdown' style={{margin: '0 10px'}}>
       <div className='dropdown' style={{position: 'relative'}}>
-        <button className='btn btn-secondary btn-sm dropdown-toggle' id={label+'dropdown'}
+        <a className='nav-link dropdown-toggle' id={label+'dropdown'}
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           style={{position: 'relative'}}
         >
         {value ? value : label}
-        </button>
+        </a>
         <div className='dropdown-menu' aria-labelledby={label+'dropdown'} style={{position: 'absolute'}}>
           {options.map((option, key) => 
             <span key={key} className='dropdown-item' onClick={onFilterClick}>{option}</span>

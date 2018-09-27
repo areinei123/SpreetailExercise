@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-// import {addToCart} from '../actions/cart.js'
+import {removeFromCart} from '../actions/cart.js'
 
 const mapStateToProps = (state, ownProps) => ({
   label: 'Remove',
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  // onClick: (item) => dispatch(newMovieDialog(item))
+  onClick: (item) => dispatch(removeFromCart(item))
 })
 
 export default connect(

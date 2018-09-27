@@ -1,17 +1,16 @@
 import {connect} from 'react-redux'
-import NavButton from '../components/NavButton.jsx'
-import {clearFilter} from '../actions/filter.js'
+import OptionCard from '../components/OptionCard.jsx'
+import {chooseOption} from '../actions/furniture.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'Clear',
-  color: 'warning'
+
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(clearFilter())
+  onClick: (option) => dispatch(chooseOption(option))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavButton)
+)(OptionCard)

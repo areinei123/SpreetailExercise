@@ -10,12 +10,12 @@ const Button = ({label, color, onClick, numberOfItems, item}) => {
   const onButtonClick = (event) => {
     item
       ? onClick(item)
-      : onClick(event)
+      : onClick()
   }
 
   return (
     <button type="button"
-      className={"btn btn-"+color+" btn-sm"}
+      className={"btn btn-"+color+" btn-sm "}
       onClick={onButtonClick}
     >
       {label}

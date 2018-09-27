@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import Button from '../components/Button.jsx'
+import NavButton from '../components/NavButton.jsx'
 import {showCart} from '../actions/cart.js'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Button)
+)(NavButton)

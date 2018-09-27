@@ -10,9 +10,9 @@ const CartItem = ({item, onChangeQuantity}) => {
         <div className='card-title'>
           <h6>{item.name} - ${item.price}</h6>
         </div>
-        <div>{item.color} / {item.material}</div>
-        <CartQuantityInput id={item.id} value={item.cartQuantity}/>
-        <RemoveFromCartButton/>
+        <div>{item.selectedOption.color} / {item.selectedOption.material}</div>
+        <CartQuantityInput id={item.selectedOption.id} value={item.cartQuantity}/>
+        <RemoveFromCartButton item={item.selectedOption.id}/>
       </div>
     </div>
   )
